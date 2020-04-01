@@ -16,16 +16,18 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterModule, Routes } from '@angular/router';
-import { EntityDefinitionService, EntityMetadataMap, EntityDataService } from '@ngrx/data';
+import { EntityDataService, EntityDefinitionService, EntityMetadataMap } from '@ngrx/data';
 import { CourseComponent } from './course/course.component';
 import { CoursesCardListComponent } from './courses-card-list/courses-card-list.component';
 import { CoursesResolver } from './courses.resolver';
 import { EditCourseDialogComponent } from './edit-course-dialog/edit-course-dialog.component';
 import { HomeComponent } from './home/home.component';
-import { CoursesHttpService } from './services/courses-http.service';
+import { compareCourses } from './model/course';
+import { compareLessons } from './model/lesson';
 import { CourseEntityService } from './services/course-entity.service';
 import { CoursesDataService } from './services/courses-data.service';
-import { compareCourses } from './model/course';
+import { CoursesHttpService } from './services/courses-http.service';
+import { LessonEntityService } from './services/lesson-entity.service';
 
 
 
@@ -49,6 +51,9 @@ const entityMetadata: EntityMetadataMap={
     entityDispatcherOptions:{
       optimisticDelete:true
     }
+  },
+  Lesson:{
+    sortComparer: compareLessons
   }
 }
 
@@ -89,6 +94,7 @@ const entityMetadata: EntityMetadataMap={
     CoursesHttpService,
     CoursesResolver,
     CourseEntityService,
+    LessonEntityService,
     CoursesDataService
   ]
 })
