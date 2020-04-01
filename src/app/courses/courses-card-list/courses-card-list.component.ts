@@ -3,6 +3,7 @@ import {Course} from "../model/course";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import {EditCourseDialogComponent} from "../edit-course-dialog/edit-course-dialog.component";
 import {defaultDialogConfig} from '../shared/default-dialog-config';
+import { CourseEntityService } from '../services/course-entity.service';
 
 @Component({
     selector: 'courses-card-list',
@@ -18,7 +19,7 @@ export class CoursesCardListComponent implements OnInit {
     courseChanged = new EventEmitter();
 
     constructor(
-      private dialog: MatDialog ) {
+      private dialog: MatDialog, private coursesEntityService:CourseEntityService ) {
     }
 
     ngOnInit() {
@@ -41,9 +42,9 @@ export class CoursesCardListComponent implements OnInit {
 
     }
 
-  onDeleteCourse(course:Course) {
+  onDeleteCourse(course:Course):void {
 
-
+    this.coursesEntityService.delete(course).subscribe((id:number)=> console.log("this course is been remove id: ", id ));
   }
 
 }
