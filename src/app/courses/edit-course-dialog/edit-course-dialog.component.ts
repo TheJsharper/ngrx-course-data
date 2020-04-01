@@ -75,8 +75,10 @@ export class EditCourseDialogComponent {
       ...this.form.value
     };
     if (this.mode == "update") {
-      this.coursesService.update(course).subscribe(()=>this.dialogRef.close());
+      this.coursesService.update(course).subscribe(() => this.dialogRef.close());
 
+    } else if (this.mode == "create") {
+      this.coursesService.add(course).subscribe((course: Course) => { console.log("New Course added", course); this.dialogRef.close(); });
     }
 
   }
