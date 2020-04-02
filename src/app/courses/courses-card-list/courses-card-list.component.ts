@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
-import {Course} from "../model/course";
-import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import {EditCourseDialogComponent} from "../edit-course-dialog/edit-course-dialog.component";
-import {defaultDialogConfig} from '../shared/default-dialog-config';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MatDialog } from "@angular/material/dialog";
+import { EditCourseDialogComponent } from "../edit-course-dialog/edit-course-dialog.component";
+import { Course } from "../model/course";
 import { CourseEntityService } from '../services/course-entity.service';
+import { defaultDialogConfig } from '../shared/default-dialog-config';
 
 @Component({
     selector: 'courses-card-list',

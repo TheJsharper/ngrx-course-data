@@ -1,4 +1,4 @@
-import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
@@ -27,7 +27,7 @@ export class EditCourseDialogComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<EditCourseDialogComponent>,
     @Inject(MAT_DIALOG_DATA) data,
-    /*private coursesService: CoursesHttpService*/ private coursesService: CourseEntityService) {
+    private coursesService: CourseEntityService) {
 
     this.dialogTitle = data.dialogTitle;
     this.course = data.course;
@@ -58,17 +58,6 @@ export class EditCourseDialogComponent {
   }
 
   onSave(): void {
-
-    /*const course: Course = {
-      ...this.course,
-      ...this.form.value
-    };
-
-    this.coursesService.saveCourse(course.id, course)
-      .subscribe(
-        () => this.dialogRef.close()
-      )*/
-
 
     const course: Course = {
       ...this.course,

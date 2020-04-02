@@ -24,6 +24,5 @@ export class CoursesResolver implements Resolve<boolean>{
             }), filter((loaded: boolean) => !!loaded),
             first()
         );
-        // this.coursesService.getAll().pipe(map((courses:Course[])=> !!courses));
     }
 }
